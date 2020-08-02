@@ -5,9 +5,6 @@ var maxCases = 0;
 
 var margin = 100;
 
-var us;
-var features;
-
 // javascript month start from 0
 var date = new Date(2020, 2, 1);
 
