@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Covid-19 Cases in U.S. States</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body onload="onload()">
+    <div class="full-screen">
+        <div class="content">
+            <div id="div-left-panel" class="left-panel">
+                <div style="width:100%; height:10%;">
+                    <h2>
+                        Covid-19 Cases in U.S. States
+                        <span class="material-icons" style="vertical-align: top;">
+                            push_pin
+                        </span>
+                    </h2>
+                </div>
+                <div id="div-map" style="width:100%; height:90%;">
+                    <div id="Alabama" class="width-100">
+                        <div id="Alabama-label" class="relative float-left width-20">
+                            Alabama
+                        </div>
+                        <div id="Alabama-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Alabama-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Alabama-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Alaska" class="width-100">
+                        <div id="Alaska-label" class="relative float-left width-20">
+                            Alaska
+                        </div>
+                        <div id="Alaska-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Alaska-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Alabama-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Arizona" class="width-100">
+                        <div id="Arizona-label" class="relative float-left width-20">
+                            Arizona
+                        </div>
+                        <div id="Arizona-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Arizona-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Alabama-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Arkansas" class="width-100">
+                        <div id="Arkansas-label" class="relative float-left width-20">
+                            Arkansas
+                        </div>
+                        <div id="Arkansas-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Arkansas-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Arkansas-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="California" class="width-100">
+                        <div id="California-label" class="relative float-left width-20">
+                            California
+                        </div>
+                        <div id="California-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="California-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="California-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Colorado" class="width-100">
+                        <div id="Colorado-label" class="relative float-left width-20">
+                            Colorado
+                        </div>
+                        <div id="Colorado-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Colorado-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Colorado-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Connecticut" class="width-100">
+                        <div id="Connecticut-label" class="relative float-left width-20">
+                            Connecticut
+                        </div>
+                        <div id="Connecticut-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Connecticut-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Connecticut-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Delaware" class="width-100">
+                        <div id="Delaware-label" class="relative float-left width-20">
+                            Delaware
+                        </div>
+                        <div id="Delaware-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Delaware-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Delaware-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Florida" class="width-100">
+                        <div id="Florida-label" class="relative float-left width-20">
+                            Florida
+                        </div>
+                        <div id="Florida-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Florida-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Florida-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Georgia" class="width-100">
+                        <div id="Georgia-label" class="relative float-left width-20">
+                            Georgia
+                        </div>
+                        <div id="Georgia-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Georgia-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Georgia-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Hawaii" class="width-100">
+                        <div id="Hawaii-label" class="relative float-left width-20">
+                            Hawaii
+                        </div>
+                        <div id="Hawaii-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Hawaii-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Hawaii-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Idaho" class="width-100">
+                        <div id="Idaho-label" class="relative float-left width-20">
+                            Idaho
+                        </div>
+                        <div id="Idaho-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Idaho-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Idaho-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Illinois" class="width-100">
+                        <div id="Illinois-label" class="relative float-left width-20">
+                            Illinois
+                        </div>
+                        <div id="Illinois-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Illinois-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Illinois-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Indiana" class="width-100">
+                        <div id="Indiana-label" class="relative float-left width-20">
+                            Indiana
+                        </div>
+                        <div id="Indiana-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Indiana-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Indiana-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Iowa" class="width-100">
+                        <div id="Iowa-label" class="relative float-left width-20">
+                            Iowa
+                        </div>
+                        <div id="Iowa-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Iowa-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Iowa-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Kansas" class="width-100">
+                        <div id="Kansas-label" class="relative float-left width-20">
+                            Kansas
+                        </div>
+                        <div id="Kansas-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Kansas-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Kansas-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Kentucky" class="width-100">
+                        <div id="Kentucky-label" class="relative float-left width-20">
+                            Kentucky
+                        </div>
+                        <div id="Kentucky-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Kentucky-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Kentucky-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Louisiana" class="width-100">
+                        <div id="Louisiana-label" class="relative float-left width-20">
+                            Louisiana
+                        </div>
+                        <div id="Louisiana-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Louisiana-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Louisiana-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Maine" class="width-100">
+                        <div id="Maine-label" class="relative float-left width-20">
+                            Maine
+                        </div>
+                        <div id="Maine-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Maine-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Maine-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Maryland" class="width-100">
+                        <div id="Maryland-label" class="relative float-left width-20">
+                            Maryland
+                        </div>
+                        <div id="Maryland-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Maryland-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Maryland-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Massachusetts" class="width-100">
+                        <div id="Massachusetts-label" class="relative float-left width-20">
+                            Massachusetts
+                        </div>
+                        <div id="Massachusetts-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Massachusetts-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Massachusetts-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Michigan" class="width-100">
+                        <div id="Michigan-label" class="relative float-left width-20">
+                            Michigan
+                        </div>
+                        <div id="Michigan-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Michigan-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Michigan-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Minnesota" class="width-100">
+                        <div id="Minnesota-label" class="relative float-left width-20">
+                            Minnesota
+                        </div>
+                        <div id="Minnesota-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Minnesota-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Minnesota-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Mississippi" class="width-100">
+                        <div id="Mississippi-label" class="relative float-left width-20">
+                            Mississippi
+                        </div>
+                        <div id="Mississippi-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Mississippi-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Mississippi-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Missouri" class="width-100">
+                        <div id="Missouri-label" class="relative float-left width-20">
+                            Missouri
+                        </div>
+                        <div id="Missouri-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Missouri-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Missouri-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Montana" class="width-100">
+                        <div id="Montana-label" class="relative float-left width-20">
+                            Montana
+                        </div>
+                        <div id="Montana-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Montana-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Montana-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Nebraska" class="width-100">
+                        <div id="Nebraska-label" class="relative float-left width-20">
+                            Nebraska
+                        </div>
+                        <div id="Nebraska-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Nebraska-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Nebraska-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Nevada" class="width-100">
+                        <div id="Nevada-label" class="relative float-left width-20">
+                            Nevada
+                        </div>
+                        <div id="Nevada-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Nevada-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Nevada-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="NewHampshire" class="width-100">
+                        <div id="NewHampshire-label" class="relative float-left width-20">
+                            New Hampshire
+                        </div>
+                        <div id="NewHampshire-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NewHampshire-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NewHampshire-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="NewJersey" class="width-100">
+                        <div id="NewJersey-label" class="relative float-left width-20">
+                            New Jersey
+                        </div>
+                        <div id="NewJersey-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NewJersey-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NewJersey-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="NewMexico" class="width-100">
+                        <div id="NewMexico-label" class="relative float-left width-20">
+                            New Mexico
+                        </div>
+                        <div id="NewMexico-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NewMexico-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NewMexico-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="NewYork" class="width-100">
+                        <div id="NewYork-label" class="relative float-left width-20">
+                            New York
+                        </div>
+                        <div id="NewYork-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NewYork-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NewYork-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="NorthCarolina" class="width-100">
+                        <div id="NorthCarolina-label" class="relative float-left width-20">
+                            North Carolina
+                        </div>
+                        <div id="NorthCarolina-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NorthCarolina-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NorthCarolina-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="NorthDakota" class="width-100">
+                        <div id="NorthDakota-label" class="relative float-left width-20">
+                            North Dakota
+                        </div>
+                        <div id="NorthDakota-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NorthDakota-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="NorthDakota-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Ohio" class="width-100">
+                        <div id="Ohio-label" class="relative float-left width-20">
+                            Ohio</div>
+                        <div id="Ohio-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Ohio-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Ohio-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Oklahoma" class="width-100">
+                        <div id="Oklahoma-label" class="relative float-left width-20">
+                            Oklahoma
+                        </div>
+                        <div id="Oklahoma-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Oklahoma-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Oklahoma-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Oregon" class="width-100">
+                        <div id="Oregon-label" class="relative float-left width-20">
+                            Oregon
+                        </div>
+                        <div id="Oregon-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Oregon-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Oregon-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Pennsylvania" class="width-100">
+                        <div id="Pennsylvania-label" class="relative float-left width-20">
+                            Pennsylvania
+                        </div>
+                        <div id="Pennsylvania-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Pennsylvania-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Pennsylvania-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="RhodeIsland" class="width-100">
+                        <div id="RhodeIsland-label" class="relative float-left width-20">
+                            RhodeIsland
+                        </div>
+                        <div id="RhodeIsland-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="RhodeIsland-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="RhodeIsland-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="SouthCarolina" class="width-100">
+                        <div id="SouthCarolina-label" class="relative float-left width-20">
+                            South Carolina
+                        </div>
+                        <div id="SouthCarolina-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="SouthCarolina-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="SouthCarolina-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="SouthDakota" class="width-100">
+                        <div id="SouthDakota-label" class="relative float-left width-20">
+                            South Dakota
+                        </div>
+                        <div id="SouthDakota-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="SouthDakota-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="SouthDakota-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Tennessee" class="width-100">
+                        <div id="Tennessee-label" class="relative float-left width-20">
+                            Tennessee
+                        </div>
+                        <div id="Tennessee-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Tennessee-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Tennessee-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Texas" class="width-100">
+                        <div id="Texas-label" class="relative float-left width-20">
+                            Texas
+                        </div>
+                        <div id="Texas-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Texas-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Texas-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Utah" class="width-100">
+                        <div id="Utah-label" class="relative float-left width-20">
+                            Utah
+                        </div>
+                        <div id="Utah-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Utah-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Utah-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Vermont" class="width-100">
+                        <div id="Vermont-label" class="relative float-left width-20">
+                            Vermont
+                        </div>
+                        <div id="Vermont-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Vermont-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Vermont-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Virginia" class="width-100">
+                        <div id="Virginia-label" class="relative float-left width-20">
+                            Virginia
+                        </div>
+                        <div id="Virginia-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Virginia-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Virginia-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Washington" class="width-100">
+                        <div id="Washington-label" class="relative float-left width-20">
+                            Washington
+                        </div>
+                        <div id="Washington-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Washington-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Washington-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="WestVirginia" class="width-100">
+                        <div id="WestVirginia-label" class="relative float-left width-20">
+                            West Virginia
+                        </div>
+                        <div id="WestVirginia-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="WestVirginia-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="WestVirginia-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Wisconsin" class="width-100">
+                        <div id="Wisconsin-label" class="relative float-left width-20">
+                            Wisconsin
+                        </div>
+                        <div id="Wisconsin-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Wisconsin-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Wisconsin-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                    <div id="Wyoming" class="width-100">
+                        <div id="Wyoming-label" class="relative float-left width-20">
+                            Wyoming
+                        </div>
+                        <div id="Wyoming-cases-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Wyoming-population-chart" class="relative float-left width-30">
+                            <svg height=40></svg>
+                        </div>
+                        <div id="Wyoming-area-chart" class="relative float-left width-20">
+                            <svg height=40></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-panel">
+                <div id="credit" class="height-10">
+                    <div class="card-title-main">
+                        Covid-19 Cases in U.S. States
+                    </div>
+                    <div class="card-title-sub">
+                        by zhang50@illinois.edu
+                    </div>
+                </div>
+                <div class="height-75">
+                    <div id="div-step-1">
+                        <div class="play-control">
+                            <div id="current-date" class="relative float-left">
+                                2020-03-01
+                            </div>
+                            <div id="btn-pause" onclick="pause_growth_chart()"
+                                class="btn-action pressed relative float-right">
+                                <span class="material-icons">
+                                    pause_circle_outline
+                                </span>
+                            </div>
+                            <div id="btn-play" onclick="play_growth_chart()" class="btn-action relative float-right">
+                                <span class="material-icons">
+                                    play_circle_outline
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="instructions">
+                            <div>
+                                Press the "Play" or "Pause" button to see growth progress.
+                            </div>
+                            <div>
+                                <svg height="21" width="16">
+                                    <circle cx="6" cy="15" r="5" fill="darkorange" />
+                                </svg>
+                                = per 10,000 cases
+                            </div>
+                            <div>
+                                <svg height="21" width="16">
+                                    <circle cx="6" cy="15" r="3" fill="darkorange" />
+                                </svg>
+                                = per 1,000 cases
+                            </div>
+                        </div>
+
+                        <hr style="margin:0 1.5em 0.5em 1.5em;" />
+
+                        <div class="step-content">
+                            What are we looking at:
+                        </div>
+                        <hr style="margin:0 1.5em 0.5em 1.5em;" />
+                    </div>
+
+                    <div id="div-step-2" class="hidden">
+                        <div class="play-control">
+                            <div id="last-date" class="relative float-left">
+
+                            </div>
+                            <div id="btn-pause" onclick="pause_growth_chart()"
+                                class="btn-action pressed relative float-right">
+                                <span class="material-icons">
+                                    pause_circle_outline
+                                </span>
+                            </div>
+                            <div id="btn-play" onclick="play_growth_chart()" class="btn-action relative float-right">
+                                <span class="material-icons">
+                                    play_circle_outline
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="instructions">
+                            <div>
+                                Press the "Play" or "Pause" button to see growth progress.
+                            </div>
+                            <div>
+                                <svg height="21" width="16">
+                                    <circle cx="6" cy="15" r="5" fill="darkorange" />
+                                </svg>
+                                = per 10,000 cases
+                            </div>
+                            <div>
+                                <svg height="21" width="16">
+                                    <circle cx="6" cy="15" r="3" fill="darkorange" />
+                                </svg>
+                                = per 1,000 cases
+                            </div>
+                            <div>
+                                <svg height="22" width="16">
+                                    <circle cx="8" cy="15" r="7" fill="#77aa44" />
+                                </svg>
+                                = per 1,000,000 people
+                            </div>
+                            <div>
+                                <svg height="21" width="16">
+                                    <circle cx="8" cy="15" r="5.5" fill="#77aa44" />
+                                </svg>
+                                = per 100,000 people
+                            </div>
+                        </div>
+
+                        <hr style="margin:0 1.5em 0.5em 1.5em;" />
+
+                        <div class="step-content">
+                            What are we looking at:
+                        </div>
+                        <hr style="margin:0 1.5em 0.5em 1.5em;" />
+                    </div>
+
+                    <div id="div-step-3" class="hidden"></div>
+                </div>
+                <div class="step-control height-10">
+                    <div id="page-number" class="relative float-left">
+                        Page 1
+                    </div>
+                    <div id="btn-next" class="btn-action relative float-right">
+                        <span class="material-icons" onclick="nextPage()">
+                            navigate_next
+                        </span>
+                    </div>
+                    <div id="btn-before" class="btn-action pressed relative float-right">
+                        <span class="material-icons" onclick="previousPage()">
+                            navigate_before
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-array.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+    <script src="population.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
