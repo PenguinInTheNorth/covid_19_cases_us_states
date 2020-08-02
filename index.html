@@ -770,7 +770,9 @@
                         <hr style="margin:0 1.5em 0.5em 1.5em;" />
 
                         <div class="step-content">
-                            What are we looking at:
+                            <p>Possible questions to ask / observation to explore:</p>
+                            <p>- What are the factors that could effect the case number?</p>
+                            <p>- What are the factors that could effect the growth speed?</p>
                         </div>
                         <hr style="margin:0 1.5em 0.5em 1.5em;" />
                     </div>
@@ -780,22 +782,21 @@
                             <div id="last-date" class="relative float-left play-control-date">
 
                             </div>
-                            <div id="btn-pause" onclick="pause_growth_chart()"
-                                class="btn-action pressed relative float-right">
-                                <span class="material-icons">
-                                    pause_circle_outline
-                                </span>
-                            </div>
-                            <div id="btn-play" onclick="play_growth_chart()" class="btn-action relative float-right">
-                                <span class="material-icons">
-                                    play_circle_outline
-                                </span>
-                            </div>
                         </div>
 
                         <div class="instructions">
                             <div>
-                                Press the "Play" or "Pause" button to see growth progress.
+                                <div id="btn-filter-case" onclick="top10case()" class="btn-action btn-border orange">
+                                    Top 10 Cases Number
+                                </div>
+                                <div id="btn-filter-population" onclick="top10population()"
+                                    class="btn-action btn-border blue">
+                                    Top 10 Population
+                                </div>
+                            </div>
+                            <hr />
+                            <div>
+                                Toggle button to filter data.
                             </div>
                             <div>
                                 <svg height="21" width="16">
@@ -811,13 +812,13 @@
                             </div>
                             <div>
                                 <svg height="22" width="16">
-                                    <circle cx="8" cy="15" r="7" fill="#11AAee" />
+                                    <circle cx="8" cy="15" r="7" fill="#77BBEE" />
                                 </svg>
                                 = per 1,000,000 population
                             </div>
                             <div>
                                 <svg height="21" width="16">
-                                    <circle cx="8" cy="15" r="5.5" fill="#11AAee" />
+                                    <circle cx="8" cy="15" r="5.5" fill="#77BBEE" />
                                 </svg>
                                 = per 100,000 population
                             </div>
@@ -826,7 +827,9 @@
                         <hr style="margin:0 1.5em 0.5em 1.5em;" />
 
                         <div class="step-content">
-                            What are we looking at:
+                            <p>Possible observations to explore:</p>
+                            <p>- It seems that case number is propotionally increasing with respect to popualtion.</p>
+                            <p>- What are other factors that could effect the case number?</p>
                         </div>
                         <hr style="margin:0 1.5em 0.5em 1.5em;" />
                     </div>
@@ -834,18 +837,6 @@
                     <div id="div-step-3" class="hidden">
                         <div class="play-control">
                             <div id="last-date-page-3" class="relative float-left play-control-date">
-
-                            </div>
-                            <div id="btn-pause" onclick="pause_growth_chart()"
-                                class="btn-action pressed relative float-right">
-                                <span class="material-icons">
-                                    pause_circle_outline
-                                </span>
-                            </div>
-                            <div id="btn-play" onclick="play_growth_chart()" class="btn-action relative float-right">
-                                <span class="material-icons">
-                                    play_circle_outline
-                                </span>
                             </div>
                         </div>
 
@@ -867,13 +858,13 @@
                             </div>
                             <div>
                                 <svg height="22" width="16">
-                                    <circle cx="8" cy="15" r="7" fill="#11AAee" />
+                                    <circle cx="8" cy="15" r="7" fill="#77BBEE" />
                                 </svg>
                                 = per 1,000,000 population
                             </div>
                             <div>
                                 <svg height="21" width="16">
-                                    <circle cx="8" cy="15" r="5.5" fill="#11AAee" />
+                                    <circle cx="8" cy="15" r="5.5" fill="#77BBEE" />
                                 </svg>
                                 = per 100,000 population
                             </div>
@@ -894,7 +885,15 @@
                         <hr style="margin:0 1.5em 0.5em 1.5em;" />
 
                         <div class="step-content">
-                            What are we looking at:
+                            <p>Possible observations to explore:</p>
+                            <p>- It seems that the larger the area and the less the population
+                                have lower cases number. This makes sense because this is related to population
+                                density.
+                            </p>
+                            <p>
+                                - If knowing more information geographically or demographically about the states,
+                                what more facotrs could we expect to find? (Possible further analysis.)
+                            </p>
                         </div>
                         <hr style="margin:0 1.5em 0.5em 1.5em;" />
                     </div>

@@ -12,7 +12,7 @@ body{
 }
 
 .full-screen{
-    width:100vw;
+    width:98vw;
     height:100vh;
 }
 
@@ -151,7 +151,7 @@ body{
     cursor: pointer;
 }
 
-.btn-action>:hover{
+.btn-action:hover{
     color:#666;
     cursor: pointer;
 }
@@ -160,9 +160,64 @@ body{
     color:#999;
 }
 
-.btn-action.pressed>:hover{
+.btn-action.pressed:hover{
     color:#999;
     cursor:default;
+}
+
+.btn-border{
+    border:1px solid silver;
+    background-color: white;
+    padding:7px 5px 4px;
+    margin:0 10px 5px 0;
+    border-radius: 5px;
+    max-width: 150px;
+}
+
+.btn-border.orange{
+    color:darkorange;
+    border-color: darkorange;
+    font-weight: bold;
+}
+
+.btn-action.orange:hover{
+    color:#ee7722;
+    border-color: #ee7722;
+    font-weight: bold;
+    background-color: #fafafa;
+}
+
+.btn-action.pressed.orange{
+    color:#999;
+    background-color:#e6e6e6;
+}
+
+.btn-action.pressed.orange:hover{
+    color:#ee7722;
+    cursor:pointer;
+}
+
+.btn-border.blue{
+    color:#77BBEE;
+    border-color: #77BBEE;
+    font-weight: bold;
+}
+
+.btn-action.blue:hover{
+    color:#3388dd;
+    border-color: #3388dd;
+    font-weight: bold;
+    background-color: #fafafa;
+}
+
+.btn-action.pressed.blue{
+    color:#999;
+    background-color:#e6e6e6;
+}
+
+.btn-action.pressed.blue:hover{
+    color:#3388dd;
+    cursor:pointer;
 }
 
 .play-control-date{

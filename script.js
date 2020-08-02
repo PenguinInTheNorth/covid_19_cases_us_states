@@ -15,6 +15,12 @@ var minPage = 1;
 var maxPage = 3;
 var currentPage = minPage;
 
+var toggleFigures = false;
+
+var filteredData = [];
+var filterCase = false;
+var filterPopulation = false;
+
 async function onload() {
     await d3.csv(covid_csv)
         .then(
@@ -105,19 +111,18 @@ function drawChart() {
 function drawCasesPlot(dateText) {
     var map_div = "div-map";
     var width = document.getElementById(map_div).clientWidth * 0.3;
-    //var height = document.getElementById(map_div).clientHeight;
 
     var currentData = getCurrentData(dateText);
     for (var i = 0; i < currentData.length; i++) {
         var stateName = currentData[i].state;
-        stateName = stateName.replace(" ", "");
+        stateNameNoSpace = stateName.replace(/ /g, "");
 
         var row_count_mod = 20;
         var rows = Math.ceil((currentData[i].ten_thousands + currentData[i].thousands) / row_count_mod);
         var height = 10 * (rows + 1);
         height = height >= 40 ? height : 40;
 
-        var svg = d3.select("#" + stateName + "-cases-chart").select("svg");
+        var svg = d3.select("#" + stateNameNoSpace + "-cases-chart").select("svg");
         svg.attr("width", width)
             .attr("height", height);
 
@@ -132,10 +137,19 @@ function drawCasesPlot(dateText) {
                 .attr("r", radius)
                 .style("fill", "darkorange");
         }
+
+        if (toggleFigures) {
+            var dom_element = document.getElementById(stateNameNoSpace + "-label");
+            if (dom_element && dom_element.innerHTML) {
+                document.getElementById(stateNameNoSpace + "-label").innerHTML = stateName + " (" + formatNumber(currentData[i].cases) + ")";
+            }
+        }
     }
 }
 
-
+function formatNumber(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 function nextPage() {
     pause_growth_chart();
@@ -197,6 +211,9 @@ function hidePage(pageNumber) {
 
 function loadPageOne() {
     resetPlotCircleSvg();
+    resetFilter();
+    toggleFigures = false;
+    drawCasesPlot(date.toISOString().slice(0, 10));
 }
 
 function resetPlotCircleSvg() {
@@ -205,6 +222,30 @@ function resetPlotCircleSvg() {
 
 function resetPlotPolygonSvg() {
     d3.select("#div-map").selectAll("svg").selectAll("polygon").remove();
+}
+
+function resetFilter() {
+    var today = new Date();
+    today.setDate(today.getDate() - 2);
+    var dateText = today.toISOString().slice(0, 10);
+    var currentData = getCurrentData(dateText);
+
+    filterPopulation = false;
+    filterCase = false;
+
+    document.getElementById("btn-filter-case")
+        .setAttribute("class", "btn-action btn-border orange");
+    document.getElementById("btn-filter-population")
+        .setAttribute("class", "btn-action btn-border blue");
+
+    for (var i = 0; i < currentData.length; i++) {
+        var stateName = currentData[i].state;
+        stateNameNoSpace = stateName.replace(/ /g, "");
+        var div_state = document.getElementById(stateNameNoSpace);
+        if (div_state) {
+            document.getElementById(stateNameNoSpace).setAttribute("class", "width-100");
+        }
+    }
 }
 
 function loadPageTwo() {
@@ -229,8 +270,106 @@ function loadPageThree() {
     drawAreaPlot(dateText);
 }
 
+function top10case() {
+    var today = new Date();
+    today.setDate(today.getDate() - 2);
+    var dateText = today.toISOString().slice(0, 10);
+    var currentData = getCurrentData(dateText);
+    var filteredDataSet = getCurrentData(dateText);
+
+    if (filterCase) {
+        document.getElementById("btn-filter-case")
+            .setAttribute("class", "btn-action btn-border orange");
+        filterCase = false;
+    }
+    else {
+        document.getElementById("btn-filter-case")
+            .setAttribute("class", "btn-action pressed btn-border orange");
+        document.getElementById("btn-filter-population")
+            .setAttribute("class", "btn-action btn-border blue");
+        filterCase = true;
+        filterPopulation = false;
+
+        filteredDataSet.sort(function (first, second) {
+            return second.cases - first.cases;
+        });
+
+        filteredDataSet = filteredDataSet.slice(0, 10);
+    }
+
+    filteredData = [];
+    (filteredDataSet).forEach(element => {
+        filteredData.push(element.state);
+    });
+
+    for (var i = 0; i < currentData.length; i++) {
+        var stateName = currentData[i].state;
+        stateNameNoSpace = stateName.replace(/ /g, "");
+        var div_state = document.getElementById(stateNameNoSpace);
+        if (filterCase && filteredData && filteredData.length > 0 && filteredData.indexOf(stateName) < 0) {
+            if (div_state) {
+                document.getElementById(stateNameNoSpace).setAttribute("class", "hidden");
+            }
+            continue;
+        }
+        if (div_state) {
+            document.getElementById(stateNameNoSpace).setAttribute("class", "width-100");
+        }
+    }
+}
+
+function top10population() {
+    var today = new Date();
+    today.setDate(today.getDate() - 2);
+    var dateText = today.toISOString().slice(0, 10);
+    var currentData = getCurrentData(dateText);
+
+    var filteredDataSet = Object.keys(populationData).map(function (key) {
+        return [key, populationData[key]];
+    });
+
+    if (filterPopulation) {
+        document.getElementById("btn-filter-population")
+            .setAttribute("class", "btn-action btn-border blue");
+        filterPopulation = false;
+    }
+    else {
+        document.getElementById("btn-filter-population")
+            .setAttribute("class", "btn-action pressed btn-border blue");
+        document.getElementById("btn-filter-case")
+            .setAttribute("class", "btn-action btn-border orange");
+        filterPopulation = true;
+        filterCase = false;
+
+        filteredDataSet.sort(function (first, second) {
+            return second[1] - first[1];
+        });
+
+        filteredDataSet = filteredDataSet.slice(0, 10);
+    }
+
+    filteredData = [];
+    (filteredDataSet).forEach(element => {
+        filteredData.push(element[0]);
+    });
+
+    for (var i = 0; i < currentData.length; i++) {
+        var stateName = currentData[i].state;
+        stateNameNoSpace = stateName.replace(/ /g, "");
+        var div_state = document.getElementById(stateNameNoSpace);
+        if (filterPopulation && filteredData && filteredData.length > 0 && filteredData.indexOf(stateName) < 0) {
+            if (div_state) {
+                document.getElementById(stateNameNoSpace).setAttribute("class", "hidden");
+            }
+            continue;
+        }
+        if (div_state) {
+            document.getElementById(stateNameNoSpace).setAttribute("class", "width-100");
+        }
+    }
+}
+
 function drawPopoulationPlot(dateText) {
-    //populationData;
 
     var map_div = "div-map";
     var width = document.getElementById(map_div).clientWidth * 0.3;
@@ -262,7 +401,7 @@ function drawPopoulationPlot(dateText) {
                 .attr("cx", cx)
                 .attr("cy", cy)
                 .attr("r", radius)
-                .style("fill", "#11AAee");
+                .style("fill", "#77BBEE");
         }
     }
 }
