@@ -1,3 +1,6 @@
+// population data was retrieved from US Census from the following link and reporocessed
+// https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/state/detail/
+
 var populationData =
 {
     "Alabama": 4903185,
