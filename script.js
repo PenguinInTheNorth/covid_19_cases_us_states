@@ -67,7 +67,6 @@ function play_growth_chart() {
 
     document.getElementById("btn-pause")
         .setAttribute("class", "btn-action relative float-right");
-
 }
 
 function pause_growth_chart() {
@@ -79,7 +78,6 @@ function pause_growth_chart() {
 
     document.getElementById("btn-pause")
         .setAttribute("class", "btn-action pressed relative float-right");
-
 }
 
 function drawChart() {
@@ -91,23 +89,26 @@ function drawChart() {
     clearInterval(drawChartInterval);
 
     date.setDate(date.getDate() + 1);
-    var dateText = date.toISOString().slice(0, 10);
-    document.getElementById("current-date").innerHTML = dateText;
 
     var today = new Date();
-    // stops the time lapse on the day before yesterday because data is not available until the day after
-    today.setDate(today.getDate() - 3);
+    // stops the time lapse on yesterday because data is not available until the day after
+    today.setDate(today.getDate() - 2);
     if (date > today) {
+        date.setDate(date.getDate() - 1);
         console.log("reached today");
         pause_growth_chart();
         return;
     }
 
+    var dateText = date.toISOString().slice(0, 10);
+    document.getElementById("current-date").innerHTML = dateText;
     drawCasesPlot(dateText);
-    drawChartInterval = setInterval(drawChart, 150);
+    drawChartInterval = setInterval(drawChart, 120);
 }
 
 function drawCasesPlot(dateText) {
+
+    resetPlotCircleSvg();
     var map_div = "div-map";
     var width = document.getElementById(map_div).clientWidth * 0.3;
 
