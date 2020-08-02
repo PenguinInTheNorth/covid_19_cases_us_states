@@ -165,13 +165,7 @@ body{
     cursor:default;
 }
 
-#current-date{
-    padding:0.4em;
-    margin: 0 0 0 0.5em;
-    font-size:1.8em;
-}
-
-#last-date{
+.play-control-date{
     padding:0.4em;
     margin: 0 0 0 0.5em;
     font-size:1.8em;

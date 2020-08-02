@@ -733,7 +733,7 @@
                 <div class="height-75">
                     <div id="div-step-1">
                         <div class="play-control">
-                            <div id="current-date" class="relative float-left">
+                            <div id="current-date" class="relative float-left play-control-date">
                                 2020-03-01
                             </div>
                             <div id="btn-pause" onclick="pause_growth_chart()"
@@ -777,7 +777,7 @@
 
                     <div id="div-step-2" class="hidden">
                         <div class="play-control">
-                            <div id="last-date" class="relative float-left">
+                            <div id="last-date" class="relative float-left play-control-date">
 
                             </div>
                             <div id="btn-pause" onclick="pause_growth_chart()"
@@ -811,13 +811,13 @@
                             </div>
                             <div>
                                 <svg height="22" width="16">
-                                    <circle cx="8" cy="15" r="7" fill="#77aa44" />
+                                    <circle cx="8" cy="15" r="7" fill="#11AAee" />
                                 </svg>
                                 = per 1,000,000 people
                             </div>
                             <div>
                                 <svg height="21" width="16">
-                                    <circle cx="8" cy="15" r="5.5" fill="#77aa44" />
+                                    <circle cx="8" cy="15" r="5.5" fill="#11AAee" />
                                 </svg>
                                 = per 100,000 people
                             </div>
@@ -831,7 +831,73 @@
                         <hr style="margin:0 1.5em 0.5em 1.5em;" />
                     </div>
 
-                    <div id="div-step-3" class="hidden"></div>
+                    <div id="div-step-3" class="hidden">
+                        <div class="play-control">
+                            <div id="last-date-page-3" class="relative float-left play-control-date">
+
+                            </div>
+                            <div id="btn-pause" onclick="pause_growth_chart()"
+                                class="btn-action pressed relative float-right">
+                                <span class="material-icons">
+                                    pause_circle_outline
+                                </span>
+                            </div>
+                            <div id="btn-play" onclick="play_growth_chart()" class="btn-action relative float-right">
+                                <span class="material-icons">
+                                    play_circle_outline
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="instructions">
+                            <div>
+                                Press the "Play" or "Pause" button to see growth progress.
+                            </div>
+                            <div>
+                                <svg height="21" width="16">
+                                    <circle cx="6" cy="15" r="5" fill="darkorange" />
+                                </svg>
+                                = per 10,000 cases
+                            </div>
+                            <div>
+                                <svg height="21" width="16">
+                                    <circle cx="6" cy="15" r="3" fill="darkorange" />
+                                </svg>
+                                = per 1,000 cases
+                            </div>
+                            <div>
+                                <svg height="22" width="16">
+                                    <circle cx="8" cy="15" r="7" fill="#11AAee" />
+                                </svg>
+                                = per 1,000,000 people
+                            </div>
+                            <div>
+                                <svg height="21" width="16">
+                                    <circle cx="8" cy="15" r="5.5" fill="#11AAee" />
+                                </svg>
+                                = per 100,000 people
+                            </div>
+                            <div>
+                                <svg height="20" width="16">
+                                    <polygon points="8,8 2,20 14,20" fill="#77aa44"></polygon>
+                                </svg>
+                                = per 10,000 Sq. Mi.
+                            </div>
+                            <div>
+                                <svg height="21" width="16">
+                                    <polygon points="8,12 4,20 12,20" fill="#77aa44"></polygon>
+                                </svg>
+                                = per 1,000 Sq. Mi.
+                            </div>
+                        </div>
+
+                        <hr style="margin:0 1.5em 0.5em 1.5em;" />
+
+                        <div class="step-content">
+                            What are we looking at:
+                        </div>
+                        <hr style="margin:0 1.5em 0.5em 1.5em;" />
+                    </div>
                 </div>
                 <div class="step-control height-10">
                     <div id="page-number" class="relative float-left">
@@ -857,6 +923,7 @@
     <script src="https://d3js.org/d3-array.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo.v1.min.js"></script>
     <script src="population.js"></script>
+    <script src="area.js"></script>
     <script src="script.js"></script>
 </body>
 

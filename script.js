@@ -1,7 +1,4 @@
 const covid_csv = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv";
-const poluation_csv = "population.csv";
-// population data was retrieved from US Census from the following link and reporocessed
-// https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/state/detail/
 
 var myData = [];
 var maxCases = 0;
@@ -189,10 +186,12 @@ function showPage(pageNumber) {
         case 2:
             loadPageTwo();
             break;
+        case 3:
+            loadPageThree();
+            break;
     }
 
     document.getElementById("page-number").innerHTML = "Page " + pageNumber;
-
 }
 
 function hidePage(pageNumber) {
@@ -201,15 +200,19 @@ function hidePage(pageNumber) {
 
 function loadPageOne() {
     resetPlotCircleSvg();
-
 }
 
 function resetPlotCircleSvg() {
     d3.select("#div-map").selectAll("svg").selectAll("circle").remove();
 }
 
+function resetPlotPolygonSvg() {
+    d3.select("#div-map").selectAll("svg").selectAll("polygon").remove();
+}
+
 function loadPageTwo() {
     resetPlotCircleSvg();
+    resetPlotPolygonSvg();
 
     var today = new Date();
     today.setDate(today.getDate() - 2);
@@ -218,6 +221,15 @@ function loadPageTwo() {
 
     drawCasesPlot(dateText);
     drawPopoulationPlot(dateText);
+}
+
+function loadPageThree() {
+    var today = new Date();
+    today.setDate(today.getDate() - 2);
+    var dateText = today.toISOString().slice(0, 10);
+    document.getElementById("last-date-page-3").innerHTML = dateText;
+
+    drawAreaPlot(dateText);
 }
 
 function drawPopoulationPlot(dateText) {
@@ -253,7 +265,56 @@ function drawPopoulationPlot(dateText) {
                 .attr("cx", cx)
                 .attr("cy", cy)
                 .attr("r", radius)
-                .style("fill", "#77aa44");
+                .style("fill", "#11AAee");
+        }
+    }
+}
+
+function drawAreaPlot(dateText) {
+
+    var map_div = "div-map";
+    var width = document.getElementById(map_div).clientWidth * 0.2;
+
+    var currentData = getCurrentData(dateText);
+    for (var i = 0; i < currentData.length; i++) {
+        var stateName = currentData[i].state;
+        stateNameNoSpace = stateName.replace(" ", "");
+
+        var areaValue = areaData[stateName];
+        var ten_thousands = Math.floor(areaValue / 10000);
+        var thoudsands = Math.round((areaValue % 10000) / 1000);
+
+        var row_count_mod = 12;
+        var rows = Math.ceil((ten_thousands + thoudsands) / row_count_mod);
+        var height = 10 * (rows + 1);
+        height = height >= 40 ? height : 40;
+
+        var svg = d3.select("#" + stateNameNoSpace + "-area-chart").select("svg");
+        svg.attr("width", width)
+            .attr("height", height);
+
+        for (var j = 0; j < ten_thousands + thoudsands; j++) {
+            var pos_offset = 12;
+            var x1 = pos_offset * ((j % row_count_mod) + 0.5);
+            var x2 = pos_offset * ((j % row_count_mod) + 0);
+            var x3 = pos_offset * ((j % row_count_mod) + 1);
+            var y1 = pos_offset * (Math.floor(j / row_count_mod) + 0);
+            var y2 = pos_offset * (Math.floor(j / row_count_mod) + 1);
+            var y3 = pos_offset * (Math.floor(j / row_count_mod) + 1);
+
+            var y1_s = pos_offset * (Math.floor(j / row_count_mod) + 0.4);
+            var x2_s = pos_offset * ((j % row_count_mod) + 0.2);
+            var x3_s = pos_offset * ((j % row_count_mod) + 0.8);
+            if (j < ten_thousands) {
+                svg.append("polygon")
+                    .attr("points", x1 + "," + y1 + " " + x2 + "," + y2 + " " + x3 + "," + y3)
+                    .style("fill", "#77aa44");
+            }
+            else {
+                svg.append("polygon")
+                    .attr("points", x1 + "," + y1_s + " " + x2_s + "," + y2 + " " + x3_s + "," + y3)
+                    .style("fill", "#77aa44");
+            }
         }
     }
 }
